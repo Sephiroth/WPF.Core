@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfCore", "Core\WpfCore\WpfCore.csproj", "{7DF5B28A-42FE-49E4-8914-3FD3A23A47A0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{7CE9D1A9-A098-497B-A4EB-F9C0D95B814A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{C869C1C1-0AA4-4246-A78A-A6CB0B521AD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfFx", "Framework\WpfFx\WpfFx.csproj", "{59857F5D-C5A2-4E10-9D64-E8173ADD5CAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCvUtil", "Core\OpenCvUtil\OpenCvUtil.csproj", "{4706ED4A-7131-475F-B95F-370B11DD39CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GifImageLib", "Framework\GifImageLib\GifImageLib.csproj", "{97E0E92D-1BFE-424F-8BEB-6E5D172B507D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel.Core", "Core\ViewModel.Core\ViewModel.Core.csproj", "{4A28A1FA-171A-4376-93C2-1F8F8F33D83C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DF5B28A-42FE-49E4-8914-3FD3A23A47A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DF5B28A-42FE-49E4-8914-3FD3A23A47A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DF5B28A-42FE-49E4-8914-3FD3A23A47A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DF5B28A-42FE-49E4-8914-3FD3A23A47A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59857F5D-C5A2-4E10-9D64-E8173ADD5CAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59857F5D-C5A2-4E10-9D64-E8173ADD5CAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59857F5D-C5A2-4E10-9D64-E8173ADD5CAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59857F5D-C5A2-4E10-9D64-E8173ADD5CAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4706ED4A-7131-475F-B95F-370B11DD39CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4706ED4A-7131-475F-B95F-370B11DD39CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4706ED4A-7131-475F-B95F-370B11DD39CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4706ED4A-7131-475F-B95F-370B11DD39CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97E0E92D-1BFE-424F-8BEB-6E5D172B507D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97E0E92D-1BFE-424F-8BEB-6E5D172B507D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97E0E92D-1BFE-424F-8BEB-6E5D172B507D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97E0E92D-1BFE-424F-8BEB-6E5D172B507D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A28A1FA-171A-4376-93C2-1F8F8F33D83C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A28A1FA-171A-4376-93C2-1F8F8F33D83C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A28A1FA-171A-4376-93C2-1F8F8F33D83C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A28A1FA-171A-4376-93C2-1F8F8F33D83C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7DF5B28A-42FE-49E4-8914-3FD3A23A47A0} = {7CE9D1A9-A098-497B-A4EB-F9C0D95B814A}
+		{59857F5D-C5A2-4E10-9D64-E8173ADD5CAF} = {C869C1C1-0AA4-4246-A78A-A6CB0B521AD9}
+		{4706ED4A-7131-475F-B95F-370B11DD39CA} = {7CE9D1A9-A098-497B-A4EB-F9C0D95B814A}
+		{97E0E92D-1BFE-424F-8BEB-6E5D172B507D} = {C869C1C1-0AA4-4246-A78A-A6CB0B521AD9}
+		{4A28A1FA-171A-4376-93C2-1F8F8F33D83C} = {7CE9D1A9-A098-497B-A4EB-F9C0D95B814A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {21F6EFBB-12AB-4777-BCD1-CC141B412401}
+	EndGlobalSection
+EndGlobal

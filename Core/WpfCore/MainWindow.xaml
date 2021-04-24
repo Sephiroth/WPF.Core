@@ -1,0 +1,35 @@
+﻿<Window x:Class="WpfCore.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfCore" 
+        xmlns:local2="clr-namespace:ViewModel.Core.Win;assembly=ViewModel.Core"
+        mc:Ignorable="d"
+        Title="MainWin" Height="800" Width="1200" Loaded="MainWinLoaded" Closed="MainWinClosed">
+    <Grid>
+        <Grid.DataContext>
+            <local2:MainWinViewModel x:Name="vm" />
+        </Grid.DataContext>
+        
+        <UniformGrid Rows="1" Columns="2">
+            <Grid Width="300" Height="80">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="流媒体url(rtmp/rtsp)" Height="20"/>
+                <TextBox Grid.Row="1" x:Name="urlTb" Text="rtmp://10.1.72.2:1935/live/ch33" Height="20" />
+                <Button Grid.Row="2" x:Name="playStreamBtn" Click="PlayStreamBtnClick" Content="播放视频流"/>
+                <Button Grid.Row="3" x:Name="sotpPlayStreamBtn" Click="SotpPlayStreamBtnClick" Content="停止播放视频流"/>
+            </Grid>
+            <Grid>
+                <Image x:Name="pImg" Width="600" Height="600" />
+                <TextBlock Text="{Binding WinTitle}" Height="20" Width="200" VerticalAlignment="Top" Margin="0,20,0,0"/>
+                <Button x:Name="bindBtn" Command="{Binding ShowHello}" Content="ViewModel绑定测试" Height="20" Width="120" VerticalAlignment="Top"/>
+            </Grid>
+        </UniformGrid>
+    </Grid>
+</Window>

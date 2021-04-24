@@ -1,0 +1,68 @@
+﻿<Window x:Class="WpfFx.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfFx"
+        xmlns:gif="clr-namespace:XamlAnimatedGif;assembly=XamlAnimatedGif"
+        xmlns:gifLib="clr-namespace:GifImageLib;assembly=GifImageLib"
+        xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+        xmlns:winForms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" 
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1200">
+    <Window.Resources>
+        <Style x:Key="ImgStyle" TargetType="Image">
+            <Setter Property="Width" Value="200" />
+            <Setter Property="Height" Value="160" />
+        </Style>
+        <Style x:Key="tbStyle" TargetType="TextBlock">
+            <!--<Setter Property="Height" Value="20" />-->
+            <Setter Property="Width" Value="300" />
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+
+        <UniformGrid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="70*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="github的开源组件XamlAnimatedGif" Grid.Row="0" Style="{StaticResource tbStyle}"/>
+                <Image x:Name="gifImg1" gif:AnimationBehavior.SourceUri="Img/test.gif" Grid.Row="1" Style="{StaticResource ImgStyle}"/>
+            </Grid>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="70*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="MediaElement,绝对路径且代码控制循环播放,不推荐" Grid.Row="0" Style="{StaticResource tbStyle}"/>
+                <MediaElement x:Name="mediaEle" Source="E:\Workspace\CSharp\WPF.Core\Framework\WpfFx\Img\test.gif" MediaEnded="MediaEleMediaEnded" Grid.Row="1" Width="200" Height="160"/>
+            </Grid>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="70*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="引用System.Drawing.dll,System.Windows.Forms.dll和WindowsFormsIntegration.dll三个winform程序集，不推荐" Grid.Row="0" Style="{StaticResource tbStyle}"/>
+                <wfi:WindowsFormsHost Width="200" Height="160" Grid.Row="1">
+                    <winForms:PictureBox x:Name="PictureOfGif" Width="200" Height="160"></winForms:PictureBox>
+                </wfi:WindowsFormsHost>
+            </Grid>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="70*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="自封装GifImageLib组件实现" Grid.Row="0" Style="{StaticResource tbStyle}"/>
+                <gifLib:GifImage x:Name="gifMedia" Stretch="Uniform" Grid.Row="1"/>
+
+            </Grid>
+        </UniformGrid>
+
+    </Grid>
+</Window>
