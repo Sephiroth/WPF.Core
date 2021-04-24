@@ -30,6 +30,7 @@ namespace WpfCore
         private WriteableBitmap _bitmap;
         private Int32Rect _rect;
         private CancellationTokenSource tokenSource = null;
+        private bool _stopPlay = false;
 
         public MainWindow()
         {
@@ -51,6 +52,7 @@ namespace WpfCore
             if (string.IsNullOrEmpty(url)) { return; }
             playStreamBtn.IsEnabled = false;
             tokenSource = new CancellationTokenSource();
+            _stopPlay = false;
             win = new OpenCvSharp.Window();
             Task.Factory.StartNew(() =>
             {
@@ -68,6 +70,7 @@ namespace WpfCore
                     using Mat frame = new Mat();
                     while (capture.Read(frame))
                     {
+                        if (_stopPlay) { break; }
                         win?.ShowImage(frame);
                         //lpData = frame.Data;
                         //curSize = frame.Width * frame.Height;
@@ -82,6 +85,7 @@ namespace WpfCore
 
         private void SotpPlayStreamBtnClick(object sender, RoutedEventArgs e)
         {
+            _stopPlay = true;
             playStreamBtn.IsEnabled = true;
             tokenSource?.Cancel();
             win?.Close();
