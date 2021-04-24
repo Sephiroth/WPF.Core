@@ -1,4 +1,4 @@
-﻿using OpenCvSharp;
+﻿using Emgu.CV;
 using System;
 using System.Buffers;
 using System.Collections.Generic;
@@ -27,7 +27,7 @@ namespace WpfCore
         private readonly ArrayPool<byte> _arrayPool = ArrayPool<byte>.Create();
         OpenCvSharp.Window win = null;
         private byte[] _buffer;
-        private WriteableBitmap _bitmap;
+        private WriteableBitmap _writeBitmap;
         private Int32Rect _rect;
         private CancellationTokenSource tokenSource = null;
         private bool _stopPlay = false;
@@ -53,38 +53,127 @@ namespace WpfCore
             playStreamBtn.IsEnabled = false;
             tokenSource = new CancellationTokenSource();
             _stopPlay = false;
-            win = new OpenCvSharp.Window();
+
             Task.Factory.StartNew(() =>
             {
-                using (VideoCapture capture = new VideoCapture(url))
-                {
-                    FourCC fourCC = FourCC.FromFourChars('m', 'p', '4', 'v');
-                    if (!capture.IsOpened())
-                    {
-                        return;
-                    }
-                    //double fps = capture.Get(VideoCaptureProperties.Fps);
-                    //double width = capture.Get(VideoCaptureProperties.FrameWidth);
-                    //double height = capture.Get(VideoCaptureProperties.FrameHeight);
-                    //OpenCvSharp.Size size = new OpenCvSharp.Size(width, height);
-                    using Mat frame = new Mat();
-                    while (_stopPlay == false)
-                    {
-                        bool readRs = capture.Read(frame);
-                        if (readRs)
-                        {
-                            win?.ShowImage(frame);
-                            //lpData = frame.Data;
-                            //curSize = frame.Width * frame.Height;
-                            RenderRgb(frame.Width, frame.Height, frame.DataStart, (int)frame.Total());
-                        }
-                    }
-                    frame.Dispose();
-                    capture.Dispose();
-                }
-                win.Close();
+                //OpenCvCaptureVideoStream(url, RenderRgb);
+                EmguCvCaptureVideoStream(url, LoadImgByEmguCvMat);
             }, tokenSource.Token);
         }
+
+        #region OpenCv捕获、播放视频流
+        /// <summary>
+        /// 基于OpenCv捕获视频流
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="action"></param>
+        public void OpenCvCaptureVideoStream(string url, Action<OpenCvSharp.Mat> action)
+        {
+            using (OpenCvSharp.VideoCapture capture = new OpenCvSharp.VideoCapture(url))
+            {
+                //FourCC fourCC = FourCC.FromFourChars('m', 'p', '4', 'v');
+                if (!capture.IsOpened())
+                {
+                    return;
+                }
+                //double fps = capture.Get(VideoCaptureProperties.Fps);
+                //double width = capture.Get(VideoCaptureProperties.FrameWidth);
+                //double height = capture.Get(VideoCaptureProperties.FrameHeight);
+                //OpenCvSharp.Size size = new OpenCvSharp.Size(width, height);
+                using OpenCvSharp.Mat frame = new OpenCvSharp.Mat();
+                while (_stopPlay == false)
+                {
+                    if (capture.Read(frame))
+                    {
+                        win?.ShowImage(frame);
+                        action?.Invoke(frame);
+                    }
+                }
+                frame.Dispose();
+                capture.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// 基于WriteableBitmap绘制
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="dataPtr"></param>
+        /// <param name="size"></param>
+        private void RenderRgb(OpenCvSharp.Mat frame)
+        {
+            using System.Drawing.Bitmap bitmap = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(frame);
+            System.Drawing.Imaging.BitmapData data = bitmap.LockBits(
+                new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height),
+                System.Drawing.Imaging.ImageLockMode.ReadOnly,
+                System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+
+            Dispatcher.Invoke(() =>
+            {
+                if (_writeBitmap == null)
+                {
+                    _writeBitmap = new WriteableBitmap(frame.Width, frame.Height, 96, 96, PixelFormats.Bgra32, null);
+                    pImg.Source = _writeBitmap;
+                }
+                _writeBitmap.Lock();
+                var rec = new Int32Rect(0, 0, bitmap.Width, bitmap.Height);
+                _writeBitmap.WritePixels(rec, data.Scan0, (data.Stride * data.Width * data.Height), data.Stride);
+                _writeBitmap.Unlock();
+            });
+            bitmap.UnlockBits(data);
+            bitmap.Dispose();
+        }
+        #endregion
+
+        #region EmguCv加载视频流播放
+        public void EmguCvCaptureVideoStream(string url, Action<Emgu.CV.Mat> action)
+        {
+            using Emgu.CV.VideoCapture capture = new Emgu.CV.VideoCapture(url, Emgu.CV.VideoCapture.API.Any);
+            if (capture.IsOpened == false)
+            {
+                return;
+            }
+            using Emgu.CV.Mat frame = capture.QueryFrame();
+            while (_stopPlay == false)
+            {
+                if (capture.Read(frame)) //capture.Retrieve(frame)// 无法继续读取
+                {
+                    if (!frame.IsEmpty)
+                    {
+                        action?.Invoke(frame);
+                    }
+                }
+            }
+            frame.Dispose();
+            capture.Dispose();
+        }
+
+        public void LoadImgByEmguCvMat(Emgu.CV.Mat frame)
+        {
+            using System.Drawing.Bitmap bitmap = frame.ToBitmap();
+            System.Drawing.Imaging.BitmapData data = bitmap.LockBits(
+                new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height),
+                System.Drawing.Imaging.ImageLockMode.ReadOnly,
+                System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+            Dispatcher.Invoke(() =>
+            {
+                if (_writeBitmap == null)
+                {
+                    _writeBitmap = new WriteableBitmap(frame.Width, frame.Height, 96, 96, PixelFormats.Bgra32, null);
+                    pImg.Source = _writeBitmap;
+                }
+                _writeBitmap.Lock();
+                var rec = new Int32Rect(0, 0, bitmap.Width, bitmap.Height);
+                _writeBitmap.WritePixels(rec, data.Scan0, (data.Stride * data.Width * data.Height), data.Stride);
+                //Marshal.Copy(data.Scan0,_writeBitmap.BackBuffer,0,1);
+                //_writeBitmap.AddDirtyRect(rec);
+                _writeBitmap.Unlock();
+            });
+            bitmap.UnlockBits(data);
+            bitmap.Dispose();
+        }
+        #endregion
 
         private void SotpPlayStreamBtnClick(object sender, RoutedEventArgs e)
         {
@@ -94,31 +183,6 @@ namespace WpfCore
             win?.Close();
         }
 
-        private void RenderRgb(int width, int height, IntPtr dataPtr, int size)
-        {
-            if (_buffer == null)
-            {
-                _buffer = _arrayPool.Rent(size);
-            }
-            Marshal.Copy(dataPtr, _buffer, 0, size);
-            Dispatcher.Invoke(() =>
-            {
-                if (_bitmap == null)
-                {
-                    _bitmap = new WriteableBitmap(width, height, 96, 96, PixelFormats.Bgra32, null);
-                    _rect = new Int32Rect(0, 0, width, height);
-                    pImg.Source = _bitmap;
-                }
-                try
-                {
-                    _bitmap.Lock();
-                    Marshal.Copy(_buffer, 0, _bitmap.BackBuffer, size);
-                    _bitmap.AddDirtyRect(_rect);
-                }
-                catch { }
-                finally { _bitmap.Unlock(); }
-            });
-        }
-
     }
+
 }
