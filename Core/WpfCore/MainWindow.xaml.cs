@@ -68,13 +68,16 @@ namespace WpfCore
                     //double height = capture.Get(VideoCaptureProperties.FrameHeight);
                     //OpenCvSharp.Size size = new OpenCvSharp.Size(width, height);
                     using Mat frame = new Mat();
-                    while (capture.Read(frame))
+                    while (_stopPlay == false)
                     {
-                        if (_stopPlay) { break; }
-                        win?.ShowImage(frame);
-                        //lpData = frame.Data;
-                        //curSize = frame.Width * frame.Height;
-                        RenderRgb(frame.Width, frame.Height, frame.DataStart, (int)frame.Total());
+                        bool readRs = capture.Read(frame);
+                        if (readRs)
+                        {
+                            win?.ShowImage(frame);
+                            //lpData = frame.Data;
+                            //curSize = frame.Width * frame.Height;
+                            RenderRgb(frame.Width, frame.Height, frame.DataStart, (int)frame.Total());
+                        }
                     }
                     frame.Dispose();
                     capture.Dispose();
