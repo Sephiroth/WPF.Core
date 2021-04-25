@@ -56,8 +56,8 @@ namespace WpfCore
 
             Task.Factory.StartNew(() =>
             {
-                //OpenCvCaptureVideoStream(url, LoadImgByOpenCvMat);
-                EmguCvCaptureVideoStream(url, LoadImgByEmguCvMat);
+                OpenCvCaptureVideoStream(url, LoadImgByOpenCvMat);
+                //EmguCvCaptureVideoStream(url, LoadImgByEmguCvMat);
             }, tokenSource.Token);
         }
 

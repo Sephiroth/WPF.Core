@@ -11,11 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfFx", "Framework\WpfFx\WpfFx.csproj", "{59857F5D-C5A2-4E10-9D64-E8173ADD5CAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCvUtil", "Core\OpenCvUtil\OpenCvUtil.csproj", "{4706ED4A-7131-475F-B95F-370B11DD39CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenCvUtil", "Core\OpenCvUtil\OpenCvUtil.csproj", "{4706ED4A-7131-475F-B95F-370B11DD39CA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GifImageLib", "Framework\GifImageLib\GifImageLib.csproj", "{97E0E92D-1BFE-424F-8BEB-6E5D172B507D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel.Core", "Core\ViewModel.Core\ViewModel.Core.csproj", "{4A28A1FA-171A-4376-93C2-1F8F8F33D83C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViewModel.Core", "Core\ViewModel.Core\ViewModel.Core.csproj", "{4A28A1FA-171A-4376-93C2-1F8F8F33D83C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmguCvUtil", "Core\EmguCvUtil\EmguCvUtil.csproj", "{E90436F5-6760-443A-BCB7-4C6E94D6A181}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{4A28A1FA-171A-4376-93C2-1F8F8F33D83C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A28A1FA-171A-4376-93C2-1F8F8F33D83C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A28A1FA-171A-4376-93C2-1F8F8F33D83C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E90436F5-6760-443A-BCB7-4C6E94D6A181}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E90436F5-6760-443A-BCB7-4C6E94D6A181}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E90436F5-6760-443A-BCB7-4C6E94D6A181}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E90436F5-6760-443A-BCB7-4C6E94D6A181}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{4706ED4A-7131-475F-B95F-370B11DD39CA} = {7CE9D1A9-A098-497B-A4EB-F9C0D95B814A}
 		{97E0E92D-1BFE-424F-8BEB-6E5D172B507D} = {C869C1C1-0AA4-4246-A78A-A6CB0B521AD9}
 		{4A28A1FA-171A-4376-93C2-1F8F8F33D83C} = {7CE9D1A9-A098-497B-A4EB-F9C0D95B814A}
+		{E90436F5-6760-443A-BCB7-4C6E94D6A181} = {7CE9D1A9-A098-497B-A4EB-F9C0D95B814A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {21F6EFBB-12AB-4777-BCD1-CC141B412401}
