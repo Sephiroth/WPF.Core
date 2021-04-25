@@ -56,7 +56,7 @@ namespace WpfCore
 
             Task.Factory.StartNew(() =>
             {
-                //OpenCvCaptureVideoStream(url, RenderRgb);
+                //OpenCvCaptureVideoStream(url, LoadImgByOpenCvMat);
                 EmguCvCaptureVideoStream(url, LoadImgByEmguCvMat);
             }, tokenSource.Token);
         }
@@ -85,7 +85,7 @@ namespace WpfCore
                 {
                     if (capture.Read(frame))
                     {
-                        win?.ShowImage(frame);
+                        //win?.ShowImage(frame);
                         action?.Invoke(frame);
                     }
                 }
@@ -101,7 +101,7 @@ namespace WpfCore
         /// <param name="height"></param>
         /// <param name="dataPtr"></param>
         /// <param name="size"></param>
-        private void RenderRgb(OpenCvSharp.Mat frame)
+        private void LoadImgByOpenCvMat(OpenCvSharp.Mat frame)
         {
             using System.Drawing.Bitmap bitmap = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(frame);
             System.Drawing.Imaging.BitmapData data = bitmap.LockBits(
@@ -115,10 +115,10 @@ namespace WpfCore
                 {
                     _writeBitmap = new WriteableBitmap(frame.Width, frame.Height, 96, 96, PixelFormats.Bgra32, null);
                     pImg.Source = _writeBitmap;
+                    _rect = new Int32Rect(0, 0, bitmap.Width, bitmap.Height);
                 }
                 _writeBitmap.Lock();
-                var rec = new Int32Rect(0, 0, bitmap.Width, bitmap.Height);
-                _writeBitmap.WritePixels(rec, data.Scan0, (data.Stride * data.Width * data.Height), data.Stride);
+                _writeBitmap.WritePixels(_rect, data.Scan0, (4 * data.Width * data.Height), data.Stride);
                 _writeBitmap.Unlock();
             });
             bitmap.UnlockBits(data);
@@ -162,10 +162,10 @@ namespace WpfCore
                 {
                     _writeBitmap = new WriteableBitmap(frame.Width, frame.Height, 96, 96, PixelFormats.Bgra32, null);
                     pImg.Source = _writeBitmap;
+                    _rect = new Int32Rect(0, 0, bitmap.Width, bitmap.Height);
                 }
                 _writeBitmap.Lock();
-                var rec = new Int32Rect(0, 0, bitmap.Width, bitmap.Height);
-                _writeBitmap.WritePixels(rec, data.Scan0, (data.Stride * data.Width * data.Height), data.Stride);
+                _writeBitmap.WritePixels(_rect, data.Scan0, (4 * data.Width * data.Height), data.Stride);
                 //Marshal.Copy(data.Scan0,_writeBitmap.BackBuffer,0,1);
                 //_writeBitmap.AddDirtyRect(rec);
                 _writeBitmap.Unlock();
@@ -178,6 +178,7 @@ namespace WpfCore
         private void SotpPlayStreamBtnClick(object sender, RoutedEventArgs e)
         {
             _stopPlay = true;
+            _writeBitmap = null;
             playStreamBtn.IsEnabled = true;
             tokenSource?.Cancel();
             win?.Close();
