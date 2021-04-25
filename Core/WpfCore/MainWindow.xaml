@@ -17,17 +17,19 @@
                 <ColumnDefinition Width="20*"/>
                 <ColumnDefinition Width="80*"/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" Width="300" Height="80">
+            <Grid Grid.Column="0" Width="300">
                 <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Text="流媒体url(rtmp/rtsp)" Height="20"/>
                 <TextBox Grid.Row="1" x:Name="urlTb" Text="rtmp://58.200.131.2:1935/livetv/hunantv" Height="20" />
                 <Button Grid.Row="2" x:Name="playStreamBtn" Click="PlayStreamBtnClick" Content="播放视频流"/>
                 <Button Grid.Row="3" x:Name="sotpPlayStreamBtn" Click="SotpPlayStreamBtnClick" Content="停止播放视频流"/>
+                <Button Grid.Row="4" x:Name="openWinBtn" Click="openWinBtnClick" Height="20" Content="打开新窗口"/>
             </Grid>
             <Grid Grid.Column="1">
                 <Image x:Name="pImg" Width="1280" Height="720" HorizontalAlignment="Right"/>

@@ -184,6 +184,11 @@ namespace WpfCore
             win?.Close();
         }
 
-    }
+        private void openWinBtnClick(object sender, RoutedEventArgs e)
+        {
+            VideoPlayerWin win = new VideoPlayerWin();
+            _ = win.ShowDialog();
+        }
 
+    }
 }
