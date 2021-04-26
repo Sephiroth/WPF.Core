@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    
+	<PackageReference Include="Emgu.CV.UI" Version="4.5.1.4349" />
+    <PackageReference Include="OpenCvSharp4.WpfExtensions" Version="4.5.2.20210404" />
   </ItemGroup>
 
   <ItemGroup>
