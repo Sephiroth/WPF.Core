@@ -6,5 +6,6 @@ namespace EmguCvUtil
 {
     public class VideoCaptureUtil
     {
+
     }
 }
