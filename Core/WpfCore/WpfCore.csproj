@@ -10,6 +10,7 @@
 	<PackageReference Include="Emgu.CV.UI" Version="4.5.1.4349" />
 	<PackageReference Include="FFmpeg.AutoGen" Version="4.4.0" />
     <PackageReference Include="OpenCvSharp4.WpfExtensions" Version="4.5.2.20210404" />
+    <PackageReference Include="SharpDX.Direct2D1" Version="4.2.0" />
   </ItemGroup>
 
   <ItemGroup>

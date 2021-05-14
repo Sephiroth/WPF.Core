@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfCore" 
-        xmlns:local2="clr-namespace:ViewModel.Core.Win;assembly=ViewModel.Core"
+        xmlns:local2="clr-namespace:ViewModel.Core.Win;assembly=ViewModel.Core" 
+        xmlns:interop="clr-namespace:System.Windows.Interop;assembly=PresentationCore"
         mc:Ignorable="d"
         Title="MainWin" Height="800" Width="1600" Loaded="MainWinLoaded" Closed="MainWinClosed">
     <Grid>
@@ -41,7 +42,7 @@
                 <Button Grid.Row="5" x:Name="openWinBtn" Click="openWinBtnClick" Height="20" Content="打开新窗口"/>
             </Grid>
             <Grid Grid.Column="1">
-                <Image x:Name="pImg" Width="1280" Height="720" HorizontalAlignment="Right"/>
+                <Image x:Name="pImg" Width="1280" Height="720" HorizontalAlignment="Right" />
                 <TextBlock Text="{Binding WinTitle}" Height="20" Width="200" VerticalAlignment="Top" Margin="0,20,0,0"/>
                 <Button x:Name="bindBtn" Command="{Binding ShowHello}" Content="ViewModel绑定测试" Height="20" Width="120" VerticalAlignment="Top"/>
             </Grid>

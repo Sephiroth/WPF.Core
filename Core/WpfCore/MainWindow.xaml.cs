@@ -44,13 +44,27 @@ namespace WpfCore
         /// </summary>
         private OpenCvSharp.Mat _tranformFrame = new OpenCvSharp.Mat();
 
+        private System.Windows.Interop.D3DImage _dImage;
+
         public MainWindow()
         {
             InitializeComponent();
         }
         private void MainWinLoaded(object sender, RoutedEventArgs e)
         {
+            //CompositionTarget.Rendering += CompositionTargetRenderingMethod;
+                
+        }
 
+        DateTime time = DateTime.Now;
+        private void CompositionTargetRenderingMethod(object sender, EventArgs e)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                DateTime t = DateTime.Now;
+                urlTb.Text = $"{Convert.ToInt32((t - time).TotalMilliseconds)}ms";
+                time = t;
+            });
         }
 
         private void MainWinClosed(object sender, EventArgs e)
@@ -107,7 +121,6 @@ namespace WpfCore
             }
         }
 
-
         /// <summary>
         /// 基于WriteableBitmap绘制
         /// </summary>
@@ -149,6 +162,7 @@ namespace WpfCore
             bitmap.UnlockBits(data);
             bitmap.Dispose();
         }
+
         #endregion
 
         #region EmguCv加载视频流播放
@@ -197,6 +211,41 @@ namespace WpfCore
             });
             bitmap.UnlockBits(data);
             bitmap.Dispose();
+        }
+        #endregion
+
+        #region D3D
+        private void LoadD3dImgByOpenCvMat(OpenCvSharp.Mat frame)
+        {
+            // 转码率
+            //if (_tranformSize.Height != 0 && frame.Height != _tranformSize.Height)
+            //{
+            //    OpenCvSharp.Cv2.Resize(frame, _tranformFrame, _tranformSize);
+            //    frame = _tranformFrame;
+            //}
+            if (_rect.Height != frame.Height)
+            {
+                _rect = new Int32Rect(0, 0, frame.Width, frame.Height);
+            }
+            //using System.Drawing.Bitmap bitmap = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(frame);
+            //System.Drawing.Imaging.BitmapData data = bitmap.LockBits(
+            //    new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height),
+            //    System.Drawing.Imaging.ImageLockMode.ReadOnly,
+            //    System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+            Dispatcher.Invoke(() =>
+            {
+                if (_dImage == null)
+                {
+                    _dImage = new System.Windows.Interop.D3DImage(frame.Width, frame.Height);
+                    pImg.Source = _dImage;
+                }
+                _dImage.Lock();
+                _dImage.AddDirtyRect(_rect);
+                _dImage.SetBackBuffer(System.Windows.Interop.D3DResourceType.IDirect3DSurface9, frame.Data);
+                _dImage.Unlock();
+            });
+            //bitmap.UnlockBits(data);
+            //bitmap.Dispose();
         }
         #endregion
 

@@ -17,7 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GifImageLib", "Framework\Gi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViewModel.Core", "Core\ViewModel.Core\ViewModel.Core.csproj", "{4A28A1FA-171A-4376-93C2-1F8F8F33D83C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmguCvUtil", "Core\EmguCvUtil\EmguCvUtil.csproj", "{E90436F5-6760-443A-BCB7-4C6E94D6A181}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmguCvUtil", "Core\EmguCvUtil\EmguCvUtil.csproj", "{E90436F5-6760-443A-BCB7-4C6E94D6A181}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsCore", "Core\WinFormsCore\WinFormsCore.csproj", "{402B8338-7523-4572-AA4B-F1C5AF92B01A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,10 @@ Global
 		{E90436F5-6760-443A-BCB7-4C6E94D6A181}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E90436F5-6760-443A-BCB7-4C6E94D6A181}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E90436F5-6760-443A-BCB7-4C6E94D6A181}.Release|Any CPU.Build.0 = Release|Any CPU
+		{402B8338-7523-4572-AA4B-F1C5AF92B01A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{402B8338-7523-4572-AA4B-F1C5AF92B01A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{402B8338-7523-4572-AA4B-F1C5AF92B01A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{402B8338-7523-4572-AA4B-F1C5AF92B01A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{97E0E92D-1BFE-424F-8BEB-6E5D172B507D} = {C869C1C1-0AA4-4246-A78A-A6CB0B521AD9}
 		{4A28A1FA-171A-4376-93C2-1F8F8F33D83C} = {7CE9D1A9-A098-497B-A4EB-F9C0D95B814A}
 		{E90436F5-6760-443A-BCB7-4C6E94D6A181} = {7CE9D1A9-A098-497B-A4EB-F9C0D95B814A}
+		{402B8338-7523-4572-AA4B-F1C5AF92B01A} = {7CE9D1A9-A098-497B-A4EB-F9C0D95B814A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {21F6EFBB-12AB-4777-BCD1-CC141B412401}
