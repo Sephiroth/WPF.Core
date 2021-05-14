@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using FFmpeg.AutoGen;
 
 namespace WpfCore
 {
@@ -27,7 +28,7 @@ namespace WpfCore
 
         public static void ReadAV()
         {
-            
+
         }
 
     }
