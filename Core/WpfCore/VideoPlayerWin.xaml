@@ -6,15 +6,23 @@
         xmlns:local="clr-namespace:WpfCore"
         mc:Ignorable="d"
         Title="MediaElement播放器" Height="450" Width="800" Closed="VideoPlayerWinClosed">
+    <Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/WpfCore;component/Style/UniversalStyle.xaml" />
+        <!--<ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Style/UniversalStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>-->
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="24"/>
             <RowDefinition />
         </Grid.RowDefinitions>
         <TextBox x:Name="selectedFileTb" Grid.Row="0" Width="150" HorizontalAlignment="Left" />
-        <Button x:Name="openFileBtn" Click="OpenFileBtnClick" Grid.Row="0" Content="选择文件" Width="60" HorizontalAlignment="Left" Margin="160 0 0 0"/>
-        <Button x:Name="playerBtn" Click="PlayerBtnClick" Grid.Row="0" Content="播放" Width="50" HorizontalAlignment="Right"/>
-        <Button x:Name="pauseBtn" Click="PauseBtnClick" Grid.Row="0" Content="暂停" Width="50" HorizontalAlignment="Right" Margin="0 0 60 0"/>
+        <Button x:Name="openFileBtn" Click="OpenFileBtnClick" Style="{StaticResource buttonStyle}" Grid.Row="0" Content="选择文件" HorizontalAlignment="Left" Margin="160 0 0 0" />
+        <Button x:Name="playerBtn" Click="PlayerBtnClick" Style="{StaticResource playerBtn}" Grid.Row="0" Width="24" Height="24" HorizontalAlignment="Right"/>
+        <Button x:Name="pauseBtn" Click="PauseBtnClick" Style="{StaticResource buttonStyle}" Grid.Row="0" Content="暂停" Width="50" HorizontalAlignment="Right" Margin="0 0 60 0"/>
 
         <MediaElement x:Name="mediaPlayer" Grid.Row="1"/>
     </Grid>

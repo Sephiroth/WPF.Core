@@ -22,6 +22,8 @@ namespace WpfCore
                     return System.Windows.Media.PixelFormats.Bgra32;
                 case System.Drawing.Imaging.PixelFormat.Format32bppRgb:
                     return System.Windows.Media.PixelFormats.Bgr32;
+                default:
+                    break;
             }
             return new System.Windows.Media.PixelFormat();
         }

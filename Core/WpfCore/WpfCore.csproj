@@ -6,6 +6,15 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>5</WarningLevel>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Img\player.jpg" />
+  </ItemGroup>
+
   <ItemGroup>
 	<PackageReference Include="Emgu.CV.UI" Version="4.5.1.4349" />
 	<PackageReference Include="FFmpeg.AutoGen" Version="4.4.0" />
@@ -17,6 +26,12 @@
     <ProjectReference Include="..\EmguCvUtil\EmguCvUtil.csproj" />
     <ProjectReference Include="..\OpenCvUtil\OpenCvUtil.csproj" />
     <ProjectReference Include="..\ViewModel.Core\ViewModel.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Img\player.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
