@@ -1,7 +1,7 @@
 ﻿
 namespace WinFormsCore
 {
-    partial class MainForm
+    partial class MenuForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,21 +29,33 @@ namespace WinFormsCore
         /// </summary>
         private void InitializeComponent()
         {
+            this.browserBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // MainForm
+            // browserBtn
+            // 
+            this.browserBtn.Location = new System.Drawing.Point(102, 116);
+            this.browserBtn.Name = "browserBtn";
+            this.browserBtn.Size = new System.Drawing.Size(75, 23);
+            this.browserBtn.TabIndex = 0;
+            this.browserBtn.Text = "浏览器";
+            this.browserBtn.UseVisualStyleBackColor = true;
+            this.browserBtn.Click += new System.EventHandler(this.browserBtn_Click);
+            // 
+            // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "MainForm";
-            this.Text = "MainForm";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
-            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.ClientSize = new System.Drawing.Size(702, 322);
+            this.Controls.Add(this.browserBtn);
+            this.Name = "MenuForm";
+            this.Text = "MenuForm";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button browserBtn;
     }
 }

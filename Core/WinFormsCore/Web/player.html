@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>WebRtcPlayer</title>
+    <style type="text/css">
+        body, #video-webrtc {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: 0px 0px 0px 0px;
+            padding: 0px 0px 0px 0px;
+        }
+    </style>
+</head>
+
+<body onload="onLoad()" style="background:black;overflow: hidden;">
+    <video id="video-webrtc" controls muted autoplay></video>
+
+    <script type="text/javascript" src="./jswebrtc.min.js"></script>
+    <script type="text/javascript">
+        var player = {};
+
+        // var video = document.getElementById('video-webrtc');
+        // var url = "webrtc://10.1.72.200/live/ch35_1234";
+        // player = new JSWebrtc.Player(url, { video: video, autoplay: true });
+        // player.options.video.muted = false;
+        // console.log(video);
+        // console.log(player);
+
+        function playerRct(event) {
+            let video = document.getElementById('video-webrtc');
+            let uri = event["rtcUri"];
+            player = null;
+            player = new JSWebrtc.Player(uri, { video: video, autoplay: true });
+            video.controls = false;
+        }
+
+        function muted(event) {
+            if (player != undefined && player != null) {
+                let state = event["state"];
+                let video = document.getElementById('video-webrtc');
+                if (state == "1") {
+                    video.muted = true;
+                } else {
+                    video.muted = false;
+                }
+            }
+        }
+
+        function reloadWeb(event) {
+            console.log("reloadEvent_executing");
+            location.reload();
+        }
+
+        // 注册事件
+        function onLoad() {
+            console.log('01');
+            if (typeof (QCefClient) == 'undefined') {
+                return;
+            }
+            console.log('02');
+            QCefClient.addEventListener("playerRctEvent", playerRct);
+
+            QCefClient.addEventListener("mutedEvent", muted);
+
+            QCefClient.addEventListener("reloadEvent", reloadWeb);
+
+        }
+
+    </script>
+</body>
+
+</html>

@@ -8,11 +8,6 @@
         Title="MediaElement播放器" Height="450" Width="800" Closed="VideoPlayerWinClosed">
     <Window.Resources>
         <ResourceDictionary Source="pack://application:,,,/WpfCore;component/Style/UniversalStyle.xaml" />
-        <!--<ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Style/UniversalStyle.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>-->
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>

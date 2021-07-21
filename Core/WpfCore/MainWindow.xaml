@@ -8,6 +8,9 @@
         xmlns:interop="clr-namespace:System.Windows.Interop;assembly=PresentationCore"
         mc:Ignorable="d"
         Title="MainWin" Height="800" Width="1600" Loaded="MainWinLoaded" Closed="MainWinClosed">
+    <Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/WpfCore;component/Style/UniversalStyle.xaml" />
+    </Window.Resources>
     <Grid>
         <Grid.DataContext>
             <local2:MainWinViewModel x:Name="vm" />
@@ -27,10 +30,10 @@
                     <RowDefinition Height="20"/>
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="流媒体url(rtmp/rtsp)" Height="20"/>
+                <TextBlock Grid.Row="0" Text="流媒体url(rtmp/rtsp)" Height="20" />
                 <TextBox Grid.Row="1" x:Name="urlTb" Text="rtmp://58.200.131.2:1935/livetv/ahtv" Height="20" />
-                <Button Grid.Row="2" x:Name="playStreamBtn" Click="PlayStreamBtnClick" Content="播放视频流"/>
-                <Button Grid.Row="3" x:Name="sotpPlayStreamBtn" Click="SotpPlayStreamBtnClick" Content="停止播放视频流"/>
+                <Button Grid.Row="2" x:Name="playStreamBtn" Click="PlayStreamBtnClick" Content="播放视频流" Style="{StaticResource buttonStyle}"/>
+                <Button Grid.Row="3" x:Name="sotpPlayStreamBtn" Click="SotpPlayStreamBtnClick" Content="停止播放视频流" Style="{StaticResource buttonStyle}"/>
 
                 <UniformGrid Grid.Row="4" Rows="1" Columns="4">
                     <RadioButton x:Name="pnoRb" Content="原画" Checked="RbChanged" IsChecked="True"/>
@@ -39,12 +42,12 @@
                     <RadioButton x:Name="p480Rb" Content="480p" Checked="RbChanged" />
                 </UniformGrid>
 
-                <Button Grid.Row="5" x:Name="openWinBtn" Click="openWinBtnClick" Height="20" Content="打开新窗口"/>
+                <Button Grid.Row="5" x:Name="openWinBtn" Click="openWinBtnClick" Height="20" Content="打开新窗口" Style="{StaticResource buttonStyle}"/>
             </Grid>
             <Grid Grid.Column="1">
                 <Image x:Name="pImg" Width="1280" Height="720" HorizontalAlignment="Right" />
                 <TextBlock Text="{Binding WinTitle}" Height="20" Width="200" VerticalAlignment="Top" Margin="0,20,0,0"/>
-                <Button x:Name="bindBtn" Command="{Binding ShowHello}" Content="ViewModel绑定测试" Height="20" Width="120" VerticalAlignment="Top"/>
+                <Button x:Name="bindBtn" Command="{Binding ShowHello}" Content="ViewModel绑定测试" Height="20" Width="120" VerticalAlignment="Top" Style="{StaticResource buttonStyle}"/>
             </Grid>
         </Grid>
     </Grid>

@@ -26,7 +26,7 @@ namespace WpfCore
     {
         private readonly ArrayPool<byte> _arrayPool = ArrayPool<byte>.Create();
         OpenCvSharp.Window win = null;
-        private byte[] _buffer;
+        private byte[] _buffer = null;
         private WriteableBitmap _writeBitmap;
         /// <summary>
         /// 当前要刷新的区域

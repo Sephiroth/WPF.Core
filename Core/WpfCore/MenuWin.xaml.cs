@@ -9,23 +9,30 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using OpenTK.Windowing.Desktop;
 
 namespace WpfCore
 {
     /// <summary>
-    /// OpenGLWin.xaml 的交互逻辑
+    /// MenuWin.xaml 的交互逻辑
     /// </summary>
-    public partial class OpenGLWin : Window
+    public partial class MenuWin : Window
     {
-        public OpenGLWin()
+        public MenuWin()
         {
             InitializeComponent();
         }
 
-        private void WinLoaded(object sender, RoutedEventArgs e)
+        private void openCvBtnClick(object sender, RoutedEventArgs e)
         {
-            
+            MainWindow win = new MainWindow();
+            win.ShowDialog();
         }
+
+        private void openALBtnClick(object sender, RoutedEventArgs e)
+        {
+            OpenALWin win = new OpenALWin();
+            win.ShowDialog();
+        }
+        
     }
 }

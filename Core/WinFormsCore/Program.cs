@@ -18,7 +18,7 @@ namespace WinFormsCore
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new MenuForm());
 
             //MainWin win = new MainWin(GameWindowSettings.Default, NativeWindowSettings.Default);
             //win.Run();
