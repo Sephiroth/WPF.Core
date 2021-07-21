@@ -22,13 +22,13 @@ namespace WpfCore
             InitializeComponent();
         }
 
-        private void openCvBtnClick(object sender, RoutedEventArgs e)
+        private void OpenCvBtnClick(object sender, RoutedEventArgs e)
         {
             MainWindow win = new MainWindow();
             win.ShowDialog();
         }
 
-        private void openALBtnClick(object sender, RoutedEventArgs e)
+        private void OpenALBtnClick(object sender, RoutedEventArgs e)
         {
             OpenALWin win = new OpenALWin();
             win.ShowDialog();

@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViewModel.Core", "Core\View
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmguCvUtil", "Core\EmguCvUtil\EmguCvUtil.csproj", "{E90436F5-6760-443A-BCB7-4C6E94D6A181}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsCore", "Core\WinFormsCore\WinFormsCore.csproj", "{402B8338-7523-4572-AA4B-F1C5AF92B01A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsCore", "Core\WinFormsCore\WinFormsCore.csproj", "{402B8338-7523-4572-AA4B-F1C5AF92B01A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTKUtils", "Core\OpenTKUtils\OpenTKUtils.csproj", "{2D6C6D56-44D0-4DDC-B7C2-7F1E4C320348}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{402B8338-7523-4572-AA4B-F1C5AF92B01A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{402B8338-7523-4572-AA4B-F1C5AF92B01A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{402B8338-7523-4572-AA4B-F1C5AF92B01A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D6C6D56-44D0-4DDC-B7C2-7F1E4C320348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D6C6D56-44D0-4DDC-B7C2-7F1E4C320348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D6C6D56-44D0-4DDC-B7C2-7F1E4C320348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D6C6D56-44D0-4DDC-B7C2-7F1E4C320348}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{4A28A1FA-171A-4376-93C2-1F8F8F33D83C} = {7CE9D1A9-A098-497B-A4EB-F9C0D95B814A}
 		{E90436F5-6760-443A-BCB7-4C6E94D6A181} = {7CE9D1A9-A098-497B-A4EB-F9C0D95B814A}
 		{402B8338-7523-4572-AA4B-F1C5AF92B01A} = {7CE9D1A9-A098-497B-A4EB-F9C0D95B814A}
+		{2D6C6D56-44D0-4DDC-B7C2-7F1E4C320348} = {7CE9D1A9-A098-497B-A4EB-F9C0D95B814A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {21F6EFBB-12AB-4777-BCD1-CC141B412401}

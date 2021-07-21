@@ -1,4 +1,5 @@
 ﻿using OpenTK.Audio.OpenAL;
+using OpenTKUtils;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,32 +24,11 @@ namespace WpfCore
             InitializeComponent();
         }
 
-        public bool Init()
-        {
-            ALDevice audioDev = ALC.OpenDevice(null);
-            AlcError err = ALC.GetError(audioDev);
-            if (err != AlcError.NoError) { return false; }
-            ALContext aLContext = ALC.CreateContext(audioDev, new int[0]);
-            bool makeRs = ALC.MakeContextCurrent(aLContext);
-            err = ALC.GetError(audioDev);
-            if (!makeRs || err != AlcError.NoError) { return false; }
-
-            //ALCdevice* inputDevice = alcCaptureOpenDevice(NULL, FREQ, AL_FORMAT_MONO16, FREQ / 2);
-            ALCaptureDevice captureDev = ALC.CaptureOpenDevice(null, 144000, ALFormat.Mono16, 144000 / 2); // FREQ
-            ALC.CaptureStart(captureDev);
-            err = ALC.GetError(audioDev);
-            if (err != AlcError.NoError) { return false; }
-
-            int[] buffer = AL.GenBuffers(16);
-            err = ALC.GetError(audioDev);
-            if (err != AlcError.NoError) { return false; }
-
-            return true;
-        }
+        
 
         private void testBtnClick(object sender, RoutedEventArgs e)
         {
-            Init();
+            AudioUtils.InitDevice();
         }
 
     }

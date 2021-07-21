@@ -26,6 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="..\EmguCvUtil\EmguCvUtil.csproj" />
     <ProjectReference Include="..\OpenCvUtil\OpenCvUtil.csproj" />
+    <ProjectReference Include="..\OpenTKUtils\OpenTKUtils.csproj" />
     <ProjectReference Include="..\ViewModel.Core\ViewModel.Core.csproj" />
   </ItemGroup>
 
