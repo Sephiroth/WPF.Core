@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.csproj" />
     <ProjectReference Include="..\EmguCvUtil\EmguCvUtil.csproj" />
     <ProjectReference Include="..\OpenCvUtil\OpenCvUtil.csproj" />
     <ProjectReference Include="..\OpenTKUtils\OpenTKUtils.csproj" />

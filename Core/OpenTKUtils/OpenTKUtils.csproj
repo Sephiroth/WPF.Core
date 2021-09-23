@@ -1,11 +1,28 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <ApplicationIcon />
+    <OutputType>Exe</OutputType>
+    <StartupObject />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FFmpeg.AutoGen" Version="4.4.0" />
+    <PackageReference Include="NAudio" Version="2.0.1" />
     <PackageReference Include="OpenTK" Version="4.6.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="E:\Workspace\CSharp\.nuget\packages\visioforge.dotnet.core.redist.base.x64\14.1.23\build\x64\atl100.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="E:\Workspace\CSharp\.nuget\packages\visioforge.dotnet.core.redist.base.x64\14.1.23\build\x64\atl100.dll" />
   </ItemGroup>
 
 </Project>

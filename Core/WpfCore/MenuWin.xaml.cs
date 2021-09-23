@@ -33,6 +33,11 @@ namespace WpfCore
             OpenALWin win = new OpenALWin();
             win.ShowDialog();
         }
-        
+
+        private void BluetoothClick(object sender, RoutedEventArgs e)
+        {
+            BluetoothWin win = new BluetoothWin();
+            win.ShowDialog();
+        }
     }
 }

@@ -10,6 +10,7 @@
         <UniformGrid Rows="2" Columns="2">
             <Button x:Name="openCvBtn" Content="OpenCv" Click="OpenCvBtnClick" Width="100" Height="20"/>
             <Button x:Name="openALBtn" Content="OpenAL" Click="OpenALBtnClick" Width="100" Height="20"/>
+            <Button x:Name="bluetoothBtn" Content="Bluetooth" Click="BluetoothClick" Width="100" Height="20"/>
         </UniformGrid>
     </Grid>
 </Window>

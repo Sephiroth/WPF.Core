@@ -40,5 +40,9 @@ namespace OpenTKUtils
             return true;
         }
 
+        public void CaptureAudio()
+        {
+        }
+
     }
 }

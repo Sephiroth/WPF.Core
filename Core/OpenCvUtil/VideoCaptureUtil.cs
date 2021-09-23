@@ -6,6 +6,6 @@ namespace OpenCvUtil
 {
     public class VideoCaptureUtil
     {
-
+        
     }
 }
