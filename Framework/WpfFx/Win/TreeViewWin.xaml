@@ -1,0 +1,32 @@
+﻿<Window x:Class="WpfFx.Win.TreeViewWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfFx.Win" 
+        xmlns:data="clr-namespace:WpfFx.Models"
+        mc:Ignorable="d"
+        Title="TreeViewWin" Height="500" Width="400" Loaded="WinLoaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <TreeView x:Name="devTreeView" ItemsSource="{Binding Path=TreeNodes,Mode=TwoWay}">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate DataType="{x:Type data:TreeNodeModel}" ItemsSource="{Binding Path=SubNodes}">
+                        <StackPanel Orientation="Horizontal">
+                            <!--<CheckBox IsChecked="{Binding Checked}" CommandParameter="{Binding id}" Content="{Binding name}"/>-->
+                            <CheckBox IsChecked="{Binding Checked,Mode=TwoWay}" CommandParameter="{Binding Id}" Content="{Binding Name}"/>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+        </Grid>
+
+        <UniformGrid Grid.Row="1" VerticalAlignment="Center">
+        </UniformGrid>
+    </Grid>
+</Window>

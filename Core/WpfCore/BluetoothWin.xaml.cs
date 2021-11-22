@@ -24,19 +24,27 @@ namespace WpfCore
             InitializeComponent();
         }
 
-        private void TestBtnClick(object sender, RoutedEventArgs e)
+        IPWorksBleUtils ble = new IPWorksBleUtils();
+
+    private void TestBtnClick(object sender, RoutedEventArgs e)
         {
+            ble.StartScan();
+            return;
+
             Task.Factory.StartNew(() =>
             {
-                BluetoothHelper bluetooth = new BluetoothHelper();
-                try
-                {
-                    bluetooth.InTheHandBluetoothLE();
-                }
-                catch (Exception ex)
-                {
-                    ShowMsg(ex.Message);
-                }
+                //using BluetoothHelper bluetooth = new BluetoothHelper();
+                //try
+                //{
+                //    bluetooth.InTheHandBluetoothLE();
+                //}
+                //catch (Exception ex)
+                //{
+                //    ShowMsg(ex.Message);
+                //}
+
+                //using IPWorksBleUtils ble = new IPWorksBleUtils();
+                
             });
         }
 

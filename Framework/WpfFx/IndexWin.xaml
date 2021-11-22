@@ -1,0 +1,15 @@
+﻿<Window x:Class="WpfFx.IndexWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfFx"
+        mc:Ignorable="d"
+        Title="IndexWin" Height="280" Width="400">
+    <Grid>
+        <UniformGrid>
+            <Button x:Name="gifWinBtn" Click="GifWinBtnClick" Content="gif测试" Width="100" Height="24"/>
+            <Button x:Name="treeViewBtn" Click="TreeViewBtnClick" Content="TreeView" Width="100" Height="24"/>
+        </UniformGrid>
+    </Grid>
+</Window>
